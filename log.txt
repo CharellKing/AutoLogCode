@@ -1,0 +1,228 @@
+货币变化日志表	log_data_moneychange
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	plylevel	int	11	角色等级
+	moneytype	int	11	货币类型
+	changetype	int	11	货币变化类型
+	moneychange	int	11	货币变化量
+	moneyvalue	int	11	变化后货币剩余
+	viplevel	int	11	玩家vip等级
+	logdate	timestamp	0	日志记录时间
+	state	int	11	日志是否推送到综合后台的状态（默认为0未推送）
+				
+物品变化日志表	log_data_stackchange			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	plylevel	int	11	角色等级
+	itemid	bigint	20	物品id
+	itemname	varchar	32	物品名称
+	itemtmplid	int	11	物品模板id
+	itemquality	int	11	物品品质
+	change	int	11	变化量
+	type	int	11	变化类型
+	afterchange	int	11	变化后数量
+	logdate	timestamp	0	日志记录时间
+				
+登录日志表	log_data_logintime			
+	id	bigint	20	主键
+	time1	bigint	20	帐号登陆完成的时间
+	time2	bigint	20	第一段loading加载的时间
+	time3	bigint	20	第二段loading加载的时间
+	time4	bigint	20	主页面显示的时间
+	time5	bigint	20	玩家退出的时间
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	plylevel	int	11	角色等级
+	viplevel	int	11	玩家VIP等级
+	accountflag	int	11	帐号创建时间
+	dateflag	int	11	本次登录的日期，如：20140101
+	type	int	11	登录类型：0为0个角色，1为1个角色
+	who	int	11	平台ID
+	datetime	bigint	11	玩家在线时长，即time5-time1
+	loginip	varchar	32	玩家登录时的ip地址
+	failcode	int	11	登录为失败时的错误码
+	upload	int	11	数据是否已推送到综合后台，默认为0未推送
+							
+在线人数日志表 log_data_online
+	id	bigint	20	主键
+	amount	int	11	在线人数
+	logdate	timestamp	0	日志记录时间
+				
+玩家升级日志表	log_data_upgrade			
+
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	plylevel	int	11	角色等级
+	unitid	bigint	20	玩家或武将ID
+	unittype	int	11	升级单位类型：玩家/武将
+	unitname	varchar	32	升级单位名字
+	prelevel	int	11	升级前等级
+	postlevel	int	11	升级后等级
+	logdate	timestamp	0	日志记录时间
+	upload	int	11	是否已推送到综合后台标识，默认为0未推送
+
+玩家聊天日志表	log_data_chat			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	plylevel	int	11	角色等级
+	chataccountid	bigint	20	接收聊天信息的玩家帐号ID
+	chatusername	varchar	32	接收聊天信息的用户名
+	chatplyid	bigint	20	接收聊天的角色ID
+	chatnickname	varchar	32	接收聊天的角色昵称
+	chatplylevel	int	11	接收聊天的角色等级
+	content	varchar	1024	聊天内容
+	type	int	11	聊天类型：私聊/喊话/帮派等
+	logdate	timestamp	0	日志记录时间
+	upload	int	0	是否已推送到综合后台的标记，默认为0未推送
+
+
+				
+武将得失变化日志表	log_data_ranger			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+	type	int	11	获得/失去武将的变化类型：如俘虏，招降
+	rangerid	int	11	武将的模板ID
+	rangername	varchar	32	武将的模板名称
+	logdate	timestamp	0	日志记录时间
+				
+
+俘虏日志表	log_data_captive			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+	type	int	11	招降类型：1普通，2重金等
+	moneytype	int	11	招降消耗的货币类型
+	moneychange	int	11	消耗的货币量
+	rangerid	int	11	武将id
+	rangername	varchar	32	招降武将的名称
+	logdate	timestamp	0	日志记录时间
+
+首次通关日志表	log_data_monstergate			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+	yearid	int	11	年id
+	cityid	int	11	城ID
+	stageid	int	11	关卡ID
+	gatename	varchar	32	关卡名称
+	logdate	timestamp	0	日志记录时间
+
+
+武将觉醒日志	log_data_awake			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+	rangerid	int	11	武将ID
+	rangername	varchar	32	武将名称
+	itemid1	int	11	觉醒消耗的物品ID
+	itemname1	varchar	32	觉醒消耗的物品名称
+	itemid2	int	11	觉醒消耗的物品ID
+	itemname2	varchar	32	觉醒消耗的物品名称
+	itemid3	int	11	觉醒消耗的物品ID
+	itemname3	varchar	32	觉醒消耗的物品名称
+	itemid4	int	11	觉醒消耗的物品ID
+	itemname4	varchar	32	觉醒消耗的物品名称
+	itemid5	int	11	觉醒消耗的物品ID
+	itemname5	varchar	32	觉醒消耗的物品名称
+	moneychange	int	11	觉醒消耗的银两数值
+	awakenlevel	int	11	觉醒后的重数
+	logdate	timestamp	0	日志记录时间
+
+装备精炼日志	log_data_refine			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+    itemid      int 11  物品模板id
+    itemname    varchar 32 物品名称
+	moneychange	int	11	精炼消耗的银两数值
+	stars	int	11	精炼后的星级
+	logdate	timestamp	0	日志记录时间
+
+装备重铸日志	log_data_reforge			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+	itemid1	int	11	物品模板id1
+	itemname1	varchar	32	物品1
+	count1	int	11	数量1
+	itemid2	int	11	物品模板id2
+	itemname2	varchar	32	物品2
+	count2	int	11	数量2
+	itemid3	int	11	物品模板id3
+	itemname3	varchar	32	物品3
+	count3	int	11	数量3
+	itemid4	int	11	物品模板id4
+	itemname4	varchar	32	物品4
+	count4	int	11	数量4
+	moneychange	int	11	重铸消耗的银两数值
+	newid	int	11	重铸后的装备ID
+	newname	varchar	32	重铸后的装备名称
+	logdate	timestamp	0	日志记录时间
+
+添加/删除好友日志表	log_data_friendship			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+	type	int	11	添加好友/删除好友
+	friendplyid	bigint	20	好友的角色ID
+	friendnick	varchar	32	好友的昵称
+	logdate	timestamp	0	日志记录时间
+
+武将领悟兵法日志表	log_data_kungfu			
+	id	bigint	20	主键
+	accountid	bigint	20	帐号ID
+	username	varchar	32	用户名，data_account中的username
+	plyid	bigint	20	角色ID
+	nickname	varchar	32	角色昵称
+	level	int	11	角色等级
+	viplevel	int	11	玩家的vip等级
+	rangerid	int	11	武将的模板ID
+	rangername	varchar	32	武将的模板名称
+	warcraft	varchar	32	领悟的兵法名称
+	quality	int	11	领悟的兵法品质
+	logdate	timestamp	0	日志记录时间
+    
+    
