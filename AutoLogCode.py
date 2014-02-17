@@ -61,7 +61,7 @@ class Field (object):
         elif "int" == self.type:
             fmt = "%d"
         elif "varchar" == self.type:
-            fmt = "%s"
+            fmt = "'%s'"
         elif "timestamp" == self.type:
             fmt = "FROM_UNIXTIME(%lld)"
         else:
